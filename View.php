@@ -1,4 +1,6 @@
 <?php
+
+/*Dette er en test av commit.*/
     class View{
         protected $data = array();
         protected $controller = null;
