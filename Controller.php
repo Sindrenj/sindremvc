@@ -6,7 +6,7 @@
         protected $action;
         protected $view;
     
-        public function __construct($name, $model, $action = 'index') {
+        public function __construct($name, $model, $action) {
             $this->model = $model;
             $this->action = $action;
             $this->name = $name;
@@ -23,6 +23,10 @@
         
         public function getName() {
             return get_class($this);
+        }
+        
+        public function render() {
+            $this->view->render();
         }
         
         public function __toString() {

@@ -9,5 +9,6 @@
             $this->set('hovedoverskrift', 'Welcome!');
             $this->set('innhold', 'Dette er innholdet! Ikke sant?');
             $this->set('dust', 'Dette er en dust');
+            $this->render();
         }
     }

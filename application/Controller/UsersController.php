@@ -1,24 +1,29 @@
 <?php
     
     class UsersController extends Controller {
-        public function __construct($model, $action) {
-            parent::__construct($model, $action);
+        public function __construct($name, $model, $action) {
+            parent::__construct($name, $model, $action);
         }
         
         public function index () {
             $this->set('hello', 'Velkommen!');
-            $this->set('content', 'Velkommen til min strålende applikasjon!');
+            $this->set('content', 'Velkommen til min strÃ¥lende applikasjon!');
+            $this->render();
         }
         
         public function create () {
-             return "Du har kommet til create";
+           $this->render();
         }
         
         public function delete () {
-             return "Du har kommet til delete";
+           $this->render();
         }
         
         public function get () {
              return "Du har kommet til get";
+        }
+        
+        public function toString() {
+            return get_class($this);
         }
     }

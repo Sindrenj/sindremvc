@@ -1,6 +1,4 @@
 <?php
-
-/*Dette er en test av commit.*/
     class View{
         protected $data = array();
         protected $controller = null;
@@ -30,10 +28,8 @@
                include $viewPath;
                //Include html-document bottom:
                include 'application/Template/htmlBottom.php';
+            } else {
+                echo "The requested view does not exist";
             }
-        }
-        
-        public function __destruct() {
-           
         }
     }

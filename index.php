@@ -1,4 +1,5 @@
 <?php
+    //Include config-files:
     include 'Model.php';
     include 'Controller.php';
     include 'View.php';
@@ -18,17 +19,15 @@
             //Create the model:
             $model = substr($urlC , 0, -1);
             //Check for action:
-            if(!isset($_GET['a']) ) {
-                $action = 'index';
-            } else {
-                //Get the method:
+            $action = 'index';
+            if(isset($_GET['a']) ) {
                 $action = Security::cleanUrl($_GET['a']);
             }
             //Create the controller:
             $c = $urlC . 'Controller';
             $controller = new $c($urlC, $model, $action);
             //Check if the method exists:
-            if(method_exists($urlC, $action)) {
+            if(method_exists($controller, $action)) {
                 //Call on the controller-action:
                 $controller->$action();
             } else {
