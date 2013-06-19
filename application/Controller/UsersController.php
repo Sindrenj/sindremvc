@@ -7,7 +7,7 @@
         
         public function index () {
             $this->set('hello', 'Velkommen!');
-            $this->set('content', 'Velkommen til min strålende applikasjon!');
+            $this->set('content', array("Velkommen", "Til", "Min", "Strålende", "Applikasjon"));
             $this->render();
         }
         
