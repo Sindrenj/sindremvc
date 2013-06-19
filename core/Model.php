@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Class Controller
+ * Is the main "base"-class that all
+ * the custom controllers must inherit from.
+ */
     abstract class Model{
         protected $datasource;
         

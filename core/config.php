@@ -15,5 +15,6 @@ define('C_DB_PASSWORD', '');
 //Default controller:
 define('C_DEFAULT_CONTROLLER', 'index');
 define('C_DEFAULT_ACTION', 'index');
+
  
 
