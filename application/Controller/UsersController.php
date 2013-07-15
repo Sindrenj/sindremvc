@@ -5,10 +5,9 @@
             parent::__construct($name, $model, $action);
         }
         
-        public function index () {
-            $this->set('hello', 'Velkommen!');
-            $this->set('content', array("Velkommen", "Til", "Min", "Strålende", "Applikasjon"));
-            $this->render();
+        public function index ($name, $lastname) {
+
+            $this->render('JSON');
         }
         
         public function create () {

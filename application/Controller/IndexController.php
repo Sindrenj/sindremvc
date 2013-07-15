@@ -4,12 +4,11 @@
             parent::__construct($name, $model, $action);
         }
         
-        public function index($input) {
+        public function index() {
             $this->set('document_title', 'Sindrenj.net - Welcome!');
             $this->set('hovedoverskrift', 'Welcome!');
             $this->set('innhold', 'Dette er innholdet! Ikke sant?');
             $this->set('dust', 'Dette er en dust');
-            $this->set('input', $input);
             $this->render();
         }
         

@@ -14,6 +14,10 @@
             $this->tlf = $tlf;
         }
         
+        public function getFirstName() {
+            return $this->firstname;
+        }
+        
         public function getAll() {
             $sql = 'SELECT * FROM user';
             $result = $this->datasource->getAll($sql);
@@ -21,6 +25,6 @@
         }
         
         public function __toString() {
-            return $id . ", " . $firstname . ", " . $lastname . ", " . $tlf;
+            return $this->id . ", " . $this->firstname . ", " . $this->lastname . ", " . $this->tlf;
         }
     }

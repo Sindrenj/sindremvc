@@ -6,16 +6,15 @@
  * Every database operation should be done through this class.
  * @author Sindre
  */
-class Database {
+class Database extends PDO{
    public $type;
    private $host;
    private $dbName;
    private $user;
    private $password;
-   private $db;
    
    //Add the databaseinformation here or override the parameters in the constructor with your own details:
-   public function __construct($type = "mysql", $host = "127.0.0.1", $dbName = "sindrenj", $user = "root", $password = "") {
+   public function __construct($type = "mysql", $host = "127.0.0.1", $dbName = "testDb", $user = "root", $password = "") {
        //Set the values:
        $this->type = $type;
        $this->host = $host;
@@ -27,7 +26,7 @@ class Database {
        $details = "$this->type:dbname=$this->dbName;host=$this->host";
        //Create the PDO-object:
        try {
-        $this->db = new PDO($details, $user, $password);
+        parent::__construct($details, $user, $password);
         //Set errormode:
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
        } catch (PDOException $dbE) {
@@ -40,7 +39,7 @@ class Database {
    {
       try {
            //Prepare the statement: 
-           $stmt = $this->db->prepare($sql);
+           $stmt = $this->prepare($sql);
            //Execute the query with the data:
             $stmt->execute($data);
       } catch(PDOException $e) {
@@ -48,32 +47,21 @@ class Database {
       }
    }
    
-   public function select($sql, $data) 
+   public function select($sql, $data, $fetchMode = 'PDO::FETCH_ASSOC') 
    {
       try {
            //Prepare the statement: 
-           $stmt = $this->db->prepare($sql);
+           $stmt = $this->prepare($sql, $data);
            //Execute the query with the data and return:
-           var_dump($stmt->execute($data));
+           $stmt->execute($data);
+           //Set fetchmode:
+           //$stmt->setFetchMode($fetchMode);
+           //return the result:
+           return $stmt;
       } catch(PDOException $e) {
           throw $e;
       }
-   }
-   
-   public function query($sql) {
-       return $this->db->query($sql);
-   }
-      
-   public function update($sql, $data) 
-   {
-       return null;
-   }
-   
-   public function delete($sql, $data)
-   {
-       return null;
-   }
-   
+   }   
            
    public function __toString() {
        //Calling this function may reveal your password if you use it the wrong way.

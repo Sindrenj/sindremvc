@@ -20,13 +20,13 @@
             //Include the correct class:
             include $cPath;
             //Create the controller:
-            $controller = new $requestedC($r->getController(), substr($requestedC, -1, 1), $r->getAction());
+            $controller = new $requestedC( $r->getController(), substr_replace($r->getController() ,'',-1), $r->getAction() );
             //Check if any action exists:
             $action = $r->getAction();
            
             if( method_exists( $controller, $action )) {
                 
-                if( $r->getParams() == null ) {
+                if( $r->getParams() == null) {
                     $controller->$action();
                 } else {
                     call_user_func_array( array($controller, $action), $r->getParams() );

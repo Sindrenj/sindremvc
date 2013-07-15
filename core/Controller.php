@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class Controller
  * Is the main "base"-class that all
@@ -14,6 +15,7 @@
             $this->name = $name;
             $this->model = $model;
             $this->action = $action;
+            $this->loadModel($model);
             $this->view = new View($this->name , $action);
         }
         
@@ -34,20 +36,17 @@
         }
         
         public function loadModel($modelName) {
-            $modelPath = '../application/Model/' . $modelName;
-            if( !is_file($modelPath) ) {
-                throw new Exception("The model were not found");
-            }
+            $modelPath = 'application/Model/' . $modelName . '.php';
             
             //Include the file
             include $modelPath;
         }
         
-        public function render() {
-            $this->view->render();
+        public function render($type = '') {
+            $this->view->render($type);
         }
         
         public function __toString() {
-            return $this->model;
+            return 'The name of the controller: ' . $this->controller . 'Model: ' . $this->model . ', ';
         }
     }
