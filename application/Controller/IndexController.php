@@ -5,10 +5,10 @@
         }
         
         public function index() {
-            $this->set('document_title', 'Sindrenj.net - Welcome!');
+            $this->set('document_title', 'Nettside - Welcome!');
             $this->set('hovedoverskrift', 'Welcome!');
-            $this->set('innhold', 'Dette er innholdet! Ikke sant?');
-            $this->set('dust', 'Dette er en dust');
+            $this->set('innhold', 'Dette er innhold');
+            $this->set('dust', 'Dette er innhold2');
             $this->render();
         }
         
