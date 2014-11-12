@@ -6,7 +6,7 @@
  */
 class DatabaseMysql {
     private $db;
-    public function DatabaseMysql($host = '195.128.174.35', $dbName = 'wno158958', $user = 'wno158958', $password = '2c99ha7z78') {
+    public function DatabaseMysql($host = '', $dbName = '', $user = '', $password = '') {
         if(!$this->db = mysql_connect($host, $user, $password)) 
                 throw new Exception("Error: Wrong connectiondetails." . mysql_error());
         if(!mysql_select_db($dbName))
